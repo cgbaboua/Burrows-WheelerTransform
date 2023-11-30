@@ -30,7 +30,7 @@ This program implements the Burrows-Wheeler Transform (BWT) for string manipulat
 
 ## Installation
 
-**If you already have the repository on your computer, you can directly skip to [Getting Started](#getting-started).**
+**If you already have the repository on your computer, you can directly skip to [Step 5.Getting Started](#getting-started).**
 
 ### Clone Repository
 

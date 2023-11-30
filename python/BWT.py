@@ -136,7 +136,7 @@ def main(my_string, my_pattern, n_mismatch):
     print(f"The string is : {my_string}")
     print(f"There are {n_match(match)} matches with the pattern '{my_pattern}' allowing {n_mismatch} mismatches")
     print(f"Match positions: {match_pos}")
-    plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos)
+    plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos,my_pattern)
 
 
 if __name__ == "__main__":

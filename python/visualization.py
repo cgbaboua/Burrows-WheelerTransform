@@ -3,7 +3,7 @@
 import plotly.graph_objs as go
 from plotly.offline import plot
 
-def plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos):
+def plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos,my_pattern):
     """
     Generates a Plotly visualization to map the positions of pattern matches in a string.
 
@@ -24,6 +24,8 @@ def plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos):
     """
     # Sort the match positions by their start position for better visualization.
     match_pos = sorted(match_pos, key=lambda x: x[0])
+    # Convert the string to uppercase 
+    my_string = my_string.upper()
     # Initialize a counter to track the match number (used for Y-axis in the plot).
     match_counter = 1 
     # Create a new Plotly figure.
@@ -60,7 +62,7 @@ def plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos):
     # Set layout properties of the figure.
     fig.update_layout(
         title={
-            'text': "Mapping",
+            'text': f"Mapping of Pattern {my_pattern} in the string of interest" if len(my_string) > 20 else f"Mapping of Pattern {my_pattern} in {my_string}",
             'y':0.9, 'x':0.5, 'xanchor': 'center', 'yanchor': 'top', 'font': dict(color='black')},
         xaxis=dict(title="Characters of the sequence", color='black'),
         yaxis=dict(title="Match Number", color='black'),

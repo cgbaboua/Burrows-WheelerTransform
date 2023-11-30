@@ -30,6 +30,7 @@ Clone the workflow github repository :
   - [examples/](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples)
     - [seq.txt](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/seq.txt)
     - [plot_BANANA.png](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/plot_BANANA.png)
+    - [mapping_plot.html](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/mapping_plot.html)
 
 
 ## Getting started
@@ -81,6 +82,8 @@ All parameters are optional. If --string and --pattern are not provided, the pro
 To test the program, use the example [seq.txt](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/seq.txt) file :
 
 `python3 python/BWT.py --string examples/seq.txt --pattern TTGC`
+
+The see the example plot : [mapping_plot.html](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/mapping_plot.html)
 
 ### Outputs 
 

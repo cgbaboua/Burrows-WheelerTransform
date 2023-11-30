@@ -20,7 +20,7 @@
    - [Outputs](#outputs)
 
 
-## 1. Summary 
+## Summary 
 This program implements the Burrows-Wheeler Transform (BWT) for string manipulation and pattern matching, focusing on string transformations, mismatch management, and visualization. The implementation utilizes Python and includes modules for different aspects of BWT processing.The project is part of the "BQ4CY060 Bio-informatique de la génomique" course at the Paris Cité University.
 
 ## System requirement

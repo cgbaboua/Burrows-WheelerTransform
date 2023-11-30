@@ -68,4 +68,4 @@ def plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos):
         paper_bgcolor='white'
     )
     # Render the plot in a web browser.
-    plot(fig, auto_open=True)
+    plot(fig, filename='mapping_plot.html',auto_open=True)

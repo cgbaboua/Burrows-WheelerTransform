@@ -10,9 +10,11 @@
 # Objet du mail: '[M2BI_IPFB-BWT] .*'
 # Nom du fichier: M2BI_IPFB-BWT-NOM1_NOM2.truc
 
+#Import other functions 
 from visualization import plot_BWT_mapping
 from bwt_no_matrix import get_BWT_simplified
 from mismatches import get_match_ignore_mismatch, n_match, get_match_pos_mismatch
+import argparse
 
 def get_BWT(T):
     if not T.endswith("$"):
@@ -105,30 +107,62 @@ def get_match_pos(match, L, all_pos):
         i += 1
     return pos
 
-# Main program #
-#my_string = "AAACTAAATATATGTAAATGTGGAAATGTAAAGAGCCAAACAAAAAAAAAAAAAAAAAAAAACATTATCTAAAAAAATAAAACTAAATATATGTAAATGTGGAAATGTAAAGAGCCAAACAAAAAAAAAAAAAAAAAAAAACATTATCTAAAAAAATAAAACTAAATATATGTAAATGTGGAAATGTAAAGAGCCAAACAAAAAAAAAAAAAAAAAAAAACATTATCTAAAAAAATAAAACTAAATATATGTAAATGTGGAAATGTAAAGAGCCAAACAAAAAAAAAAAAAAAAAAAAACATTATCTAAAAAAATA"
-my_string = "BANANA"
-my_string_sorted = sorted("$" + my_string.upper())
-my_pattern = "NA"
-BWT = get_BWT_simplified(my_string)
-FM = get_FM(BWT)
-C = get_C(FM)
-I = get_I(BWT, FM)
-all_pos = get_pos(BWT, I, C)
-n_mismatch = 1
-match = get_match_ignore_mismatch(my_pattern, FM, C,my_string,n_mismatch)
-match_pos = get_match_pos_mismatch(match, len(my_pattern), all_pos,my_string)
-match_list = list(match)
-print(f"The string is : {my_string}")
-print(
-    f"There are {n_match(match)} match with the pattern '{my_pattern}' and allowing {n_mismatch} mismatchs"
-)
-print(f"Positions des matchs: {match_pos}")
-# print(BWT)
-# print(I)
-# [print(f"{i} {my_string_sorted[i]}---{BWT[i]}") for i in range(len(BWT))]
-# [print(f"{i} -- {FM[i]}") for i in range(len(FM))]
-# print(match)
-# print(all_pos)
-# print(f"C = {C}")
-plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos)
+# Main program
+
+def read_pattern_from_file(file_path):
+    """Reads a pattern from a specified file."""
+    with open(file_path, 'r') as file:
+        return file.read().strip().replace(" ","").replace("\n","")
+
+def print_help():
+    """Prints help information for using the script."""
+    print("Usage: python3 BWT.py --string [string or file] --pattern [pattern] --mismatch [mismatch]")
+    print("--string: The string to process (default an ATP8 Seq)")
+    print("--pattern: The pattern to match or path to file containing pattern (default 'AATC')")
+    print("--mismatch: Number of allowed mismatches (default 1)")
+    print("Example: python3 BWT.py --string APPLE --pattern PL --mismatch 0 or python3 BWT.py --string ../apple.txt --pattern PL --mismatch 0")
+
+def main(my_string, my_pattern, n_mismatch):
+    """Main function that processes the string, pattern, and mismatch count."""
+    my_string_sorted = sorted("$" + my_string.upper())
+    BWT = get_BWT_simplified(my_string)
+    FM = get_FM(BWT)
+    C = get_C(FM)
+    I = get_I(BWT, FM)
+    all_pos = get_pos(BWT, I, C)
+    match = get_match_ignore_mismatch(my_pattern, FM, C, my_string, n_mismatch)
+    match_pos = get_match_pos_mismatch(match, len(my_pattern), all_pos, my_string)
+    match_list = list(match)
+    print(f"The string is : {my_string}")
+    print(f"There are {n_match(match)} matches with the pattern '{my_pattern}' allowing {n_mismatch} mismatches")
+    print(f"Match positions: {match_pos}")
+    plot_BWT_mapping(my_string_sorted, my_string, match_list, match_pos)
+
+
+if __name__ == "__main__":
+# Default values
+    my_string = "ATGCCCCAACTAAATACTACCGTATGGCCCACCATAATTACCCCCATACTCCTTACACTATTCCTCATCACCCAACTAAAAATATTAAACACAAACTACCACCTACCTCCCTCACCAAAGCCCATAAAAATAAAAAATTATAACAAACCCTGAGAACCAAAATGAACGAAAATCTGTTCGCTTCATTCATTGCCCCCACAATCCTAG"
+    my_pattern = "AATC"
+    n_mismatch = 1
+    parser = argparse.ArgumentParser(
+        description="Process a string with BWT algorithm.",
+        epilog="Example usage: python3 BWT.py --string APPLE --pattern PL --mismatch 0\n"
+               "Or: python3 BWT.py --string ../apple.txt --pattern PL --mismatch 0\n"
+               "Note: --string and --pattern should be used together. You can use --mismatch alone."
+    )
+    parser.add_argument("--string", help="The string to process or path to file containing the string", default=f"{my_string}")
+    parser.add_argument("--pattern", help="The pattern to match", default="AATC")
+    parser.add_argument("--mismatch", help="Number of allowed mismatches", type=int, default=1)
+    args = parser.parse_args()
+    # Validate that both --string and --pattern are provided if one is given
+    if args.string != f"{my_string}" and args.pattern == "AATC":
+        parser.error("Both --string and --pattern must be provided together.")
+    if args.pattern != "AATC" and args.string == f"{my_string}":
+        parser.error("Both --string and --pattern must be provided together.")
+    # Check if the string or pattern are file paths and read from files if necessary
+    if args.string.endswith(".txt"):
+        args.string = read_pattern_from_file(args.string)
+    main(args.string, args.pattern, args.mismatch)
+   
+  
+

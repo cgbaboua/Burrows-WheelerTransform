@@ -3,7 +3,24 @@
 # BQ4CY060 Bio-informatique de la génomique | BWT - MAPPING
 **Author** : ABDI Feriel, BENKORTEBI Manel, GBABOUA Cassandra
 
-## Summary 
+## Table of Contents
+1. [Summary](#summary)
+2. [System Requirement](#system-requirement)
+3. [Installation](#installation)
+   - [Clone Repository](#clone-repository)
+   - [Install Required Packages](#install-required-packages)
+4. [Repository Contents](#repository-contents)
+5. [Getting Started](#getting-started)
+   - [Basic Usage](#basic-usage)
+   - [Inputs](#inputs)
+6. [Features and Functions](#features-and-functions)
+7. [Packages Used](#packages-used)
+8. [Outputs and Examples](#outputs-and-examples)
+   - [Examples](#examples)
+   - [Outputs](#outputs)
+
+
+## 1. Summary 
 This program implements the Burrows-Wheeler Transform (BWT) for string manipulation and pattern matching, focusing on string transformations, mismatch management, and visualization. The implementation utilizes Python and includes modules for different aspects of BWT processing.The project is part of the "BQ4CY060 Bio-informatique de la génomique" course at the Paris Cité University.
 
 ## System requirement
@@ -12,6 +29,8 @@ This program implements the Burrows-Wheeler Transform (BWT) for string manipulat
 - Plotly package for visualization (install using `pip install plotly` or `conda install plotly` if using conda)
 
 ## Installation
+
+**If you already have the repository on your computer, you can directly skip to [Step 4. Repository Contents](#repository-contents).**
 
 ### Clone Repository
 

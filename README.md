@@ -36,7 +36,9 @@ This program implements the Burrows-Wheeler Transform (BWT) for string manipulat
 
 Clone the workflow github repository :
 
-`git clone https://github.com/cgbaboua/Burrows-WheelerTransform.git`
+```bash
+git clone https://github.com/cgbaboua/Burrows-WheelerTransform.git
+```
 
 ### Repository contents 
 [Burrows-WheelerTransform/](https://github.com/cgbaboua/Burrows-WheelerTransform)
@@ -55,20 +57,25 @@ Clone the workflow github repository :
 
 ### Install Required Packages
 Install Plotly for visualization:
-`pip install plotly`
-OR
-If using Conda:
-`conda install plotly`
-
+```bash
+pip install plotly
+```
+Or, if using Conda:
+```bash
+conda install plotly
+```
 
 ### Basic Usage
 To launch the program, you can run for example : 
-
-`python3 python/BWT.py [--string "YourString"] [--pattern "YourPattern"] [--mismatch 0]`
-
+```python
+python3 python/BWT.py [--string "YourString"] [--pattern "YourPattern"] [--mismatch 0]
+```
 OR 
 
-`python3 python/BWT.py`
+```python
+python3 python/BWT.py 
+```
+
 
 ### Inputs 
 - --string: (Optional) The string to be processed. Can be a plain string or a file path ending in .txt. Default is a predefined ATP8 sequence. If provided, --pattern must also be provided.
@@ -98,8 +105,9 @@ All parameters are optional. If --string and --pattern are not provided, the pro
 ### Examples
 
 To test the program, use the example [seq.txt](https://github.com/cgbaboua/Burrows-WheelerTransform/blob/main/examples/seq.txt) file :
-
-`python3 python/BWT.py --string examples/seq.txt --pattern TTGC`
+```python
+python3 python/BWT.py --string examples/seq.txt --pattern TTGC
+```
 
 ### Outputs 
 

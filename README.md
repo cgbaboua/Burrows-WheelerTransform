@@ -111,5 +111,5 @@ python3 python/BWT.py --string examples/seq.txt --pattern TTGC
 
 ### Outputs 
 
-- An interactive HTML plot is automatically generated and opened in the default web browser, showcasing the BWT results. The plot is created in the current working directory and can be saved as a PNG file.
+- An interactive HTML plot is automatically generated and opened in the default web browser, showcasing the BWT results. The plot is created in the current working directory and can be saved as a PNG file. For a detailed explanation of how to interact with the plot, please refer to the [Navigate the Interactive Graph](https://github.com/cgbaboua/Burrows-WheelerTransform/wiki/BWT-Wiki#navigating-the-interactive-graph) section in our [BWT Wiki](https://github.com/cgbaboua/Burrows-WheelerTransform/wiki/BWT-Wiki).
 - Console outputs include the processed string and pattern matching results.

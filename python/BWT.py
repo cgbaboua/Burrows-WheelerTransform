@@ -146,8 +146,8 @@ if __name__ == "__main__":
     n_mismatch = 1
     parser = argparse.ArgumentParser(
         description="Process a string with BWT algorithm.",
-        epilog="Example usage: python3 BWT.py --string APPLE --pattern PL --mismatch 0\n"
-               "Or: python3 BWT.py --string ../examples/seq.txt --pattern TTGC --mismatch 0\n"
+        epilog="Example usage: python3 python/BWT.py --string APPLE --pattern PL --mismatch 0\n"
+               "Or: python3 python/BWT.py --string examples/seq.txt --pattern TTGC --mismatch 0\n"
                "Note: --string and --pattern should be used together. You can use --mismatch alone."
     )
     parser.add_argument("--string", help="The string to process or path to file containing the string", default=f"{my_string}")
